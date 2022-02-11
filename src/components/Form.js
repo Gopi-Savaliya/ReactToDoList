@@ -20,7 +20,7 @@ class Form extends Component {
     }
 
   render() {
-    const { task, job } = this.state;
+    const { task } = this.state;
 
     return (
       <form>

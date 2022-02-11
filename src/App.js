@@ -27,7 +27,7 @@ class App extends Component {
         <h1 className='my-4'>TO-Do List</h1>
         <Form onSubmitHandler={this.onSubmitHandler} />
         <hr className="my-5" />
-        {this.state.tasks.length!=0?<Table tasks={this.state.tasks} taskComplete={this.taskComplete} />:""}
+        {this.state.tasks.length!==0?<Table tasks={this.state.tasks} taskComplete={this.taskComplete} />:""}
       </div>
     );
   }
