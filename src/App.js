@@ -24,7 +24,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <h1 className='my-4'>TO-Do List</h1>
+        <h1 className='my-4'>To-Do List</h1>
         <Form onSubmitHandler={this.onSubmitHandler} />
         <hr className="my-5" />
         {this.state.tasks.length!==0?<Table tasks={this.state.tasks} taskComplete={this.taskComplete} />:""}
