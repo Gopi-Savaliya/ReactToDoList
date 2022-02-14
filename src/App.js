@@ -14,11 +14,21 @@ class App extends Component {
       tasks: this.state.tasks.filter((task, i) => {
         return i !== index
       }),
-    })
+    });
   }
 
   onSubmitHandler = (task) => {
-    this.setState({tasks: [...this.state.tasks, task]})
+    this.setState({tasks: this.state.tasks.concat(task)});
+  }
+
+  componentDidMount = () => {
+    JSON.parse(localStorage.getItem('tasks')) && this.setState({
+      tasks: JSON.parse(localStorage.getItem('tasks'))
+    });
+  }
+
+  componentDidUpdate = () => {
+    localStorage.setItem('tasks',JSON.stringify(this.state.tasks));
   }
 
   render() {
