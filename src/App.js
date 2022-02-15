@@ -2,6 +2,8 @@ import './App.css';
 import React, { Component } from 'react'
 import Table from './components/Table'
 import Form from './components/Form';
+import Navbar from './components/Navbar'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 class App extends Component {
 
@@ -33,12 +35,21 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
-        <h1 className='my-4'>To-Do List</h1>
-        <Form onSubmitHandler={this.onSubmitHandler} />
-        <hr className="my-5" />
-        {this.state.tasks.length!==0?<Table tasks={this.state.tasks} taskComplete={this.taskComplete} />:""}
-      </div>
+      <Router>
+        <div className="container">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={
+                <div className="mt-5">
+                  <Form onSubmitHandler={this.onSubmitHandler} />
+                  <hr className="my-5" />
+                  {this.state.tasks.length!==0?<Table tasks={this.state.tasks} taskComplete={this.taskComplete} />:""}
+                </div>
+              }/>
+            <Route path="/tasks" element={this.state.tasks.length!==0?<Table tasks={this.state.tasks} taskComplete={this.taskComplete} />:<p className='App mt-5'>No Tasks</p>} />
+          </Routes>
+        </div>
+      </Router>
     );
   }
 }
